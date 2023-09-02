@@ -51,7 +51,9 @@ class IncomeList extends StatelessWidget {
                   income.category,
                   style: const TextStyle(fontSize: 16,),
                 ),
-                subtitle: Text(income.description),
+                subtitle: income.description.isEmpty?
+                    null
+                    : Text(income.description),
                 trailing: Text(
                   '+₹${income.amount.toStringAsFixed(1)}',
                   style: const TextStyle(

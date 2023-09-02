@@ -9,31 +9,31 @@ class DateDivider extends StatelessWidget {
     return Column(
       children: [
         Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 16),
-                    child: Text(
-                      "Today",
-                      style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.grey[500]),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 16),
-                    child: Text(
-                      DateFormat('d MMMM').format(DateTime.now()),
-                      style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.grey[500]),
-                    ),
-                  ),
-                ],
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 16),
+              child: Text(
+                "Today",
+                style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.grey[500]),
               ),
-              const Divider(endIndent: 12, indent: 12),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 16),
+              child: Text(
+                DateFormat('d MMMM').format(DateTime.now()),
+                style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.grey[500]),
+              ),
+            ),
+          ],
+        ),
+        const Divider(endIndent: 12, indent: 12),
       ],
     );
   }

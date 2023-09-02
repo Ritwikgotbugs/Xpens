@@ -52,7 +52,7 @@ class ExpenseList extends StatelessWidget {
                   expense.category,
                   style: const TextStyle(fontSize: 16,),
                 ),
-                subtitle: Text(expense.description),
+                subtitle: expense.description.isEmpty? null : Text(expense.description),
                 trailing: Text(
                   '-₹${expense.amount.toStringAsFixed(1)}',
                   style: const TextStyle(color: Colors.red, fontSize: 18),

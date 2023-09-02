@@ -11,13 +11,12 @@ class TotalCount extends StatelessWidget {
   Widget build(BuildContext context) {
     final ExpenseController expenseController = Get.put(ExpenseController());
     return Obx(
-      ()=>
-      Container(
+      () => Container(
         margin: const EdgeInsets.all(12),
         height: 140,
         width: double.infinity,
         decoration: BoxDecoration(
-          color: Get.isDarkMode? Colors.grey.shade800 : primary,
+          color: primary,
           borderRadius: BorderRadius.circular(30),
         ),
         child: Row(
@@ -25,35 +24,45 @@ class TotalCount extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Padding(
-              padding: const EdgeInsets.only(left:20.0),
-              child: Row(
+              padding: const EdgeInsets.only(left: 20.0, top: 28),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  const Text(
-                    "₹",
-                    style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w100),
+                  Text(
+                    "Today's Balance",
+                    style: TextStyle(color: Colors.grey.shade400),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Text(
-                      "${(-expenseController.getTotalExpense) + (expenseController.getTotalIncome)}",
-                      style: const TextStyle(
-                          fontSize: 35,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold),
-                    ),
+                  Row(
+                    children: [
+                      const Text(
+                        "₹",
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w100),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10),
+                        child: Text(
+                          "${(-expenseController.getTotalExpense) + (expenseController.getTotalIncome)}",
+                          style: const TextStyle(
+                              fontSize: 35,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(right: 16,top: 10),
+              padding: const EdgeInsets.only(right: 16, top: 10),
               child: Column(
                 children: [
                   const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 12.0,vertical: 4),
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 12.0, vertical: 4),
                     child: Text(
                       "Expense",
                       style: TextStyle(
@@ -63,7 +72,9 @@ class TotalCount extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8,),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 8,
+                    ),
                     child: Text(
                       "- ${expenseController.getTotalExpense}",
                       style: const TextStyle(
@@ -72,7 +83,7 @@ class TotalCount extends StatelessWidget {
                           fontWeight: FontWeight.bold),
                     ),
                   ),
-                   const Padding(
+                  const Padding(
                     padding: EdgeInsets.only(top: 8.0),
                     child: Text(
                       "Income",
