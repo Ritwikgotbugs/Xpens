@@ -20,10 +20,10 @@ class _NavBarState extends State<NavBar> {
 
   final List<Widget> _pages = [
     const HomePage(),
-    const Budget(),
+    const BudgetPage(),
     AddExpensePage(),
      const Analytics(),
-     const Profile()
+    const Profile()
   ];
 
   void _onItemTapped(index) {
@@ -52,6 +52,7 @@ class _NavBarState extends State<NavBar> {
               ),
               onPressed: () => _onItemTapped(0),
             ),
+            
              IconButton(
               tooltip: "Budget",
               icon: Icon(

@@ -135,9 +135,9 @@ class _AnalyticsState extends State<Analytics> {
                 ],
               ),
             ),
-            SizedBox(height: 20,),
+            const SizedBox(height: 20,),
             if (isExpenseSelected) ExpensePieChart() else IncomePieChart(),
-            SizedBox(height: 20,),
+            const SizedBox(height: 20,),
             if (isExpenseSelected) const ExpenseList() else const IncomeList()
           ],
         ),

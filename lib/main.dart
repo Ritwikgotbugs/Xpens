@@ -5,9 +5,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:xpens/screens/nav.dart';
 import 'controller/controller.dart';
-import 'supabase/login.dart';
-import 'supabase/signin.dart';
-import 'supabase/auth_screen.dart';
+import 'auth/login.dart';
+import 'auth/auth_screen.dart';
 
 Future<void> main() async {
   await dotenv.load(fileName: "lib/.env");
@@ -42,7 +41,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: <String, WidgetBuilder>{
         '/': (_) => const AuthScreen(),
-        '/login': (_) =>  LoginPage(),
+        '/login': (_) =>  const LoginPage(),
         '/home': (_) => const NavBar(),
       },
       initialBinding: BindingsBuilder(() {

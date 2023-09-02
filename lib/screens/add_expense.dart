@@ -1,10 +1,10 @@
 // ignore_for_file: use_key_in_widget_constructors
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:xpens/screens/nav.dart';
+import 'package:xpens/widgets/textfield.dart';
 import '../controller/controller.dart';
 import '../model/model.dart';
 import '../styles/styles.dart';
@@ -34,7 +34,7 @@ class _AddExpensePageState extends State<AddExpensePage> {
   ];
 
   final List<String> iconCategory = [
-    'assets/pizza.png',
+    'assets/food.png',
     'assets/transport.png',
     'assets/groceries.png',
     'assets/drinks.png',
@@ -45,7 +45,7 @@ class _AddExpensePageState extends State<AddExpensePage> {
     'assets/others.png',
   ];
 
-  String selectedCategory = 'Food';
+  String selectedCategory = 'Others';
 
   bool isPopupVisible = false;
 
@@ -74,16 +74,16 @@ class _AddExpensePageState extends State<AddExpensePage> {
                         color: Get.isDarkMode ? Colors.white : Colors.black),
                   ),
                 ),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
                 GridView.builder(
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3,
                     mainAxisSpacing: 1,
                     crossAxisSpacing: 1,
                   ),
                   itemCount: categories.length,
                   shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
                   itemBuilder: (BuildContext context, int index) {
                     final category = categories[index];
                     return GestureDetector(
@@ -156,7 +156,7 @@ class _AddExpensePageState extends State<AddExpensePage> {
                 padding: const EdgeInsets.all(12.0),
                 child: ElevatedButton(
                   style: ButtonStyle(
-                    elevation: MaterialStatePropertyAll(2),
+                    elevation: const MaterialStatePropertyAll(2),
                     backgroundColor: MaterialStatePropertyAll(
                         Get.isDarkMode ? Colors.grey : primary),
                     shape: MaterialStateProperty.all(
@@ -257,114 +257,75 @@ class _AddExpensePageState extends State<AddExpensePage> {
                   ),
                 ),
                 SizedBox(
-                  child: Center(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(Icons.currency_rupee_rounded),
-                          Obx(
-                            () {
-                              var width =
-                                  MediaQuery.of(context).size.width - 100;
-                              var amountLength = amount.value.toString().length;
-                              if (amount.value == 0.0) {
-                                width = 100;
-                              } else if (amountLength * 20 <
-                                  MediaQuery.of(context).size.width - 100) {
-                                width = amountLength * 20;
-                              }
-                              return SizedBox(
-                                width: width,
-                                child: TextField(
-                                  textAlign: TextAlign.center,
-                                  keyboardType:
-                                      const TextInputType.numberWithOptions(
-                                          decimal: true),
-                                  controller: moneycontroller,
-                                  onChanged: (text) {
-                                    amount.value = double.tryParse(text) ?? 0.0;
+      child: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Icon(Icons.currency_rupee_rounded),
+              Obx(
+                () {
+                  var width = MediaQuery.of(context).size.width - 100;
+                  var amountLength = amount.value.toString().length;
+                  if (amount.value == 0.0) {
+                    width = 100;
+                  } else if (amountLength * 20 <
+                      MediaQuery.of(context).size.width - 100) {
+                    width = amountLength * 20;
+                  }
+                  return SizedBox(
+                    width: width,
+                    child: TextField(
+                      textAlign: TextAlign.center,
+                      keyboardType:
+                          const TextInputType.numberWithOptions(decimal: true),
+                      controller: moneycontroller,
+                      onChanged: (text) {
+                        amount.value = double.tryParse(text) ?? 0.0;
 
-                                    if (amount.value == 0.0) {
-                                      moneycontroller.clear();
-                                    }
-                                  },
-                                  decoration: InputDecoration(
-                                    enabledBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                      borderSide: const BorderSide(
-                                        width: 0,
-                                        color: Colors.transparent,
-                                      ),
-                                    ),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                      borderSide: const BorderSide(
-                                        width: 0,
-                                        color: Colors.transparent,
-                                      ),
-                                    ),
-                                    border: InputBorder.none,
-                                    fillColor: Colors.transparent,
-                                    hintText: '0.0',
-                                    hintStyle: TextStyle(
-                                      color: Get.isDarkMode
-                                          ? Colors.white
-                                          : Colors.grey,
-                                      height: 1.0,
-                                    ),
-                                    filled: true,
-                                  ),
-                                  style: TextStyle(
-                                      overflow: TextOverflow.ellipsis,
-                                      fontSize: 40.0,
-                                      color: Get.isDarkMode
-                                          ? Colors.white
-                                          : Colors.black),
-                                ),
-                              );
-                            },
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: TextField(
-                    controller: descriptioncontroller,
-                    onChanged: (text) {
-                      setState(() {});
-                    },
-                    decoration: InputDecoration(
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: const BorderSide(
-                          width: 0,
-                          color: Colors.transparent,
+                        if (amount.value == 0.0) {
+                          moneycontroller.clear();
+                        }
+                      },
+                      decoration: InputDecoration(
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: const BorderSide(
+                            width: 0,
+                            color: Colors.transparent,
+                          ),
                         ),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: const BorderSide(
-                          width: 0,
-                          color: Colors.transparent,
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: const BorderSide(
+                            width: 0,
+                            color: Colors.transparent,
+                          ),
                         ),
+                        border: InputBorder.none,
+                        fillColor: Colors.transparent,
+                        hintText: '0.0',
+                        hintStyle: TextStyle(
+                          color: Get.isDarkMode ? Colors.white : Colors.grey,
+                          height: 1.0,
+                        ),
+                        filled: true,
                       ),
-                      border: InputBorder.none,
-                      fillColor:
-                          Get.isDarkMode ? Colors.grey[800] : Colors.grey[200],
-                      hintText: 'Description',
-                      hintStyle: const TextStyle(color: Colors.grey),
-                      filled: true,
+                      style: TextStyle(
+                          overflow: TextOverflow.ellipsis,
+                          fontSize: 40.0,
+                          color: Get.isDarkMode ? Colors.white : Colors.black),
                     ),
-                    style: TextStyle(
-                        fontSize: 20.0,
-                        color: Get.isDarkMode ? Colors.white : Colors.black),
-                  ),
-                ),
+                  );
+                },
+              )
+            ],
+          ),
+        ),
+      ),
+    ),
+                CustomField(text: "Description", controller: descriptioncontroller),
                 GestureDetector(
                   onTap: categotySheetModal,
                   child: Padding(
@@ -372,7 +333,8 @@ class _AddExpensePageState extends State<AddExpensePage> {
                     child: Container(
                       padding: const EdgeInsets.all(12),
                       decoration: BoxDecoration(
-                        border: Border.all(color: Colors.grey),
+                        color: Get.isDarkMode? Colors.grey[800] : Colors.grey[200],
+                        border: Border.all(color: Colors.transparent),
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Row(
@@ -381,12 +343,12 @@ class _AddExpensePageState extends State<AddExpensePage> {
                           Row(
                             children: [
                               SizedBox(
-                                width: 60,
-                                height: 60,
+                                width: 40,
+                                height: 40,
                                 child: ClipRRect(
                                     borderRadius: BorderRadius.circular(10),
                                     child: Image.asset(iconCategory[
-                                        categories.indexOf(selectedCategory)])),
+                                        categories.indexOf(selectedCategory)],),),
                               ),
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
@@ -395,7 +357,7 @@ class _AddExpensePageState extends State<AddExpensePage> {
                                         fontSize: 18,
                                         color: Get.isDarkMode
                                             ? Colors.white
-                                            : Colors.black)),
+                                            : Colors.black),),
                               ),
                             ],
                           ),
@@ -436,19 +398,6 @@ class _AddExpensePageState extends State<AddExpensePage> {
                 width: MediaQuery.sizeOf(context).width,
                 child: ElevatedButton(
                   onPressed: () {
-                    /*
-                    if (moneycontroller.text.isEmpty) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          backgroundColor: primary,
-                          content: Text(
-                            'Please enter an amount',
-                            style: TextStyle(
-                                fontSize: 16, color: Colors.white),
-                          ),
-                        ),
-                      );
-                    }*/
                     double amount =
                         double.tryParse(moneycontroller.text) ?? 0.0;
                     if (amount > 0) {
@@ -470,7 +419,7 @@ class _AddExpensePageState extends State<AddExpensePage> {
                     }
                   },
                   style: ButtonStyle(
-                    elevation: MaterialStatePropertyAll(0),
+                    elevation: const MaterialStatePropertyAll(0),
                     backgroundColor: const MaterialStatePropertyAll(primary),
                     shape: MaterialStateProperty.all(
                       RoundedRectangleBorder(
@@ -478,10 +427,10 @@ class _AddExpensePageState extends State<AddExpensePage> {
                       ),
                     ),
                   ),
-                  child: const Center(
+                  child:  Center(
                     child: Text(
-                      "Add Expense",
-                      style: TextStyle(
+                      isExpenseSelected? "Add Expense" : "Add Income",
+                      style: const TextStyle(
                         fontSize: 16,
                         color: Colors.white,
                       ),
