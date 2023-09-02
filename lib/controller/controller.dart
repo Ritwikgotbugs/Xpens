@@ -1,10 +1,10 @@
 import 'package:get/get.dart';
-
 import '../model/model.dart';
 
 class ExpenseController extends GetxController {
   RxList<Expense> expenses = <Expense>[].obs;
   RxList<Expense> incomes = <Expense>[].obs;
+
 
   void addExpense(Expense expense) {
     expenses.add(expense);
