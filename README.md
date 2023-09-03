@@ -21,3 +21,7 @@ An app made for you to track your daily expenses
 - [Fl Chart](https://pub.dev/packages/fl_chart)
 
 ## Preview of the App
+
+https://github.com/Ritwikgotbugs/Xpens/assets/101137482/f06bb6c3-6170-4e2a-981e-a4fb287c7af3
+
+
