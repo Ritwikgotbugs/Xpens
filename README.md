@@ -1,16 +1,23 @@
-# xpens
+<h1 align="center">
+Xpens
+</h1>
+<h3 align="center">
+An app made for you to track your daily expenses
+</h3>
+<p align="center"> Xpens is the ultimate solution for anyone looking to gain control over their finances and track their daily expenses effortlessly. Say goodbye to financial stress and start managing your money with ease.</p>
 
-A new Flutter project.
+## Features Implemented
+- [x] - Secured API Keys
+- [x] - User Authentication using Supabase
+- [x] - Getx State Management
+- [x] - Detailed Analysis using graphs
+- [ ] - Date-wise expense (In Development)
 
-## Getting Started
+## Dependencies Used
 
-This project is a starting point for a Flutter application.
+- [Get](https://pub.dev/packages/get)
+- [Supabase](https://pub.dev/packages/supabase_flutter)
+- [Dotenv (.env)](https://pub.dev/packages/supabase_flutter)
+- [Fl Chart](https://pub.dev/packages/fl_chart)
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Preview of the App
