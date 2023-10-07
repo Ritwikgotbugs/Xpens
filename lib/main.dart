@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: <String, WidgetBuilder>{
-        '/': (_) => const AuthScreen(),
+        '/main': (_) => const AuthScreen(),
         '/login': (_) =>  const LoginPage(),
         '/home': (_) => const NavBar(),
       },
